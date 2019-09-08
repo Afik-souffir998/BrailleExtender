@@ -48,8 +48,8 @@ from . import configBE
 config.conf.spec["brailleExtender"] = configBE.getConfspec()
 from . import utils
 from .updateCheck import *
-from . import patchs
 from . import dictionaries
+from . import patchs
 
 isPy3 = True if sys.version_info >= (3, 0) else False
 instanceGP = None
