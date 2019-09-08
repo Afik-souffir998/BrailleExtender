@@ -22,7 +22,6 @@ import wx
 import addonHandler
 addonHandler.initTranslation()
 from . import settings
-from . import dictionaries
 import api
 import appModuleHandler
 import braille
@@ -50,6 +49,7 @@ config.conf.spec["brailleExtender"] = configBE.getConfspec()
 from . import utils
 from .updateCheck import *
 from . import patchs
+from . import dictionaries
 
 isPy3 = True if sys.version_info >= (3, 0) else False
 instanceGP = None
