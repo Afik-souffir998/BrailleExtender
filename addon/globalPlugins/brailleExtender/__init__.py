@@ -249,7 +249,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if self.backup__brailleTableDict != config.conf["braille"]["translationTable"]:
 			self.backup__brailleTableDict = config.conf["braille"]["translationTable"]
 			dictionaries.setDictTables()
-
 		nextHandler()
 		return
 
