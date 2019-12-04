@@ -182,6 +182,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def __init__(self):
 		super(globalPluginHandler.GlobalPlugin, self).__init__()
 		patchs.instanceGP = self
+		self.reloadBrailleTables()
 		settings.instanceGP = self
 		configBE.loadConf()
 		configBE.initGestures()
@@ -246,9 +247,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			configBE.curBD = braille.handler.display.name
 			self.onReload(None, 1)
 
-		if self.backup__brailleTableDict != config.conf["braille"]["translationTable"]:
-			self.backup__brailleTableDict = config.conf["braille"]["translationTable"]
-			dictionaries.setDictTables()
+		if self.backup__brailleTableDict != config.conf["braille"]["translationTable"]: self.reloadBrailleTables()
 		nextHandler()
 		return
 
@@ -293,6 +292,15 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		gui.mainFrame.sysTrayIcon.Bind(wx.EVT_MENU, self.onUpdate, item)
 		item = menu.Append(wx.ID_ANY, _("&Website"), _("Open addon's website."))
 		gui.mainFrame.sysTrayIcon.Bind(wx.EVT_MENU, self.onWebsite, item)
+
+	def reloadBrailleTables(self):
+		self.backup__brailleTableDict = config.conf["braille"]["translationTable"]
+		dictionaries.setDictTables()
+		dictionaries.notifyInvalidTables()
+		if config.conf["brailleExtender"]["tabSpace"]:
+			liblouisDef = r"always \t " + ("0-" * configBE.getTabSize()).strip('-')
+			patchs.louis.compileString(patchs.getCurrentBrailleTables(), bytes(liblouisDef, "ASCII"))
+		patchs.setUndefinedChar()
 
 	@staticmethod
 	def onDefaultDictionary(evt):
