@@ -506,3 +506,4 @@ brailleInput.BrailleInputHandler._translate = _translate
 globalCommands.GlobalCommands.script_braille_routeTo = script_braille_routeTo
 louis._createTablesString = _createTablesString
 script_braille_routeTo.__doc__ = origFunc["script_braille_routeTo"].__doc__
+

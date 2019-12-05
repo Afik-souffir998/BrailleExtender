@@ -437,9 +437,6 @@ class BrailleTablesDlg(gui.settingsDialogs.SettingsDialog):
 		self.showEmojiDescription = sHelper.addItem(wx.CheckBox(self, label=_("Show emoji descriptions")))
 		self.showEmojiDescription.SetValue(config.conf["brailleExtender"]["showEmojiDescription"])
 
-		self.showEmojiDescription = sHelper.addItem(wx.CheckBox(self, label=_("Show emoji descriptions")))
-		self.showEmojiDescription.SetValue(config.conf["brailleExtender"]["showEmojiDescription"])
-
 		self.customBrailleTablesBtn = bHelper1.addButton(self, wx.NewId(), "%s..." % _("Alternative and &custom braille tables"), wx.DefaultPosition)
 		self.customBrailleTablesBtn.Bind(wx.EVT_BUTTON, self.onCustomBrailleTablesBtn)
 		sHelper.addItem(bHelper1)

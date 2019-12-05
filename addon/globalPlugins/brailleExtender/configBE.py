@@ -175,7 +175,6 @@ def getConfspec():
 		"tabSize_%s" % curBD: "integer(min=1, default=2, max=42)",
 		"showEmojiDescription":  "boolean(default=True)",
 		"undefinedCharReprType": "integer(min=0, default=0, max=9)",
->>>>>>> 7222d1c6019779f49abd009511c2a4a6a2cc697d
 		"undefinedCharRepr": "string(default=0)",
 		"showNameUndefinedChar": "boolean(default=False)",
 		"postTable": 'string(default="None")',
